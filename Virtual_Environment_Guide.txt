@@ -1,0 +1,51 @@
+==============================================================================================================
+                              Python Virtual Envirnments
+
+The main purpose of Python virtual environments is to create an isolated environment for Python 
+projects. This means that each project can have its own dependencies, regardless of what dependencies 
+every other project has.
+==============================================================================================================
+If you are using Python 3, then you should already have the venv module from the standard library installed.
+Note: venv (which comes from Python3) and virtualenv are toatally different tools.
+
+1. Installing virtualenv
+	pip install virtualenv
+
+2. Test your installation (By Checking the Version):
+	virtualenv --version
+
+3. Start by making a new directory to work with:
+	mkdir <python-virtual-environments> && cd <python-virtual-environments>
+
+ create a virtualenv
+	virtualenv <name_of_the_virtual_environment>
+
+	To create a Python 3 virtual environment, use the following command:	
+		virtualenv -p /usr/bin/python3 virtualenv_name
+
+	To create a Python 2.7 virtual environment, use the following command:
+		virtualenv -p /usr/bin/python2.7 virtualenv_name
+
+4. To Activate the Virtual Environment
+	
+	In Linux
+	source <name_of_the_virtual_environment>/bin/activate
+
+	In Windows
+	\path\to\env\Scripts\activate
+	Ex: ..\Tutorials\cv_env\Scripts\activate (Navigate to the parent directory where your virtual environment is at)
+
+
+5. deactivate the virtual environment by the following command:
+	deactivate
+
+===========================================================================================================================
+To List all the Installed Packeges in the Virtual Environment
+
+	pip list --local 
+	OR
+	pip freeze --local
+
+
+============================================================================================================================
+..\..\Tutorials\cv_env\Scripts\activate
