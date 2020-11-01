@@ -7,6 +7,7 @@ import os
 import tensorflow as tf
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPool2D, Dense, Flatten, Dropout
+import tensorflowjs as tfjs
 
 print(tf.__version__)
 
@@ -32,11 +33,11 @@ def read_csv_labels(fileName):
 
 # from tensorflow.keras.datasets import mnist
 # (x_train, y_train), (x_test, y_test) = mnist.load_data() 
-x_train = read_csv_data("x_train_dataset.csv")
+x_train = read_csv_data("Datasets/x_train_dataset.csv")
 print(x_train.shape)
-y_train = read_csv_labels("y_train_dataset.csv")
-x_test = read_csv_data("x_test_dataset.csv")
-y_test = read_csv_labels("y_test_dataset.csv")
+y_train = read_csv_labels("Datasets/y_train_dataset.csv")
+x_test = read_csv_data("Datasets/x_test_dataset.csv")
+y_test = read_csv_labels("Datasets/y_test_dataset.csv")
 
 x_train = x_train / float(x_train.max())
 x_test = x_test / float(x_test.max())
@@ -73,8 +74,14 @@ model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=
 # Training
 history = model.fit(x_train, y_train, batch_size=256, epochs=6, verbose=1, validation_data=(x_test, y_test))
 
-print("################################ Saving... ###################################")
-model.save('ss_model') 
+print("################################ Saving... --> Python Model ###################################")
+model.save('ss_model_v2') 
+print("Saved Successfully")
+
+print("################################ Saving... --> TFJS Model")
+tfjs.converters.save_keras_model(model, "TFJS_Saved/")
+print("Saved Successfully")
+
 
 # Evaluate the model
 loss, acc = model.evaluate(x_test, y_test)
