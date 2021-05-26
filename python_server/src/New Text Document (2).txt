@@ -1,0 +1,6 @@
+Client ID
+205654755429-ugscoimr7scv9fjjsthf8dphagp97a6h.apps.googleusercontent.com
+
+
+Client Secret
+MuU60EVXMpDd2xbGpAhA0A1R
